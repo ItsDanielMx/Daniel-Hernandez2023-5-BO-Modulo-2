@@ -1,10 +1,7 @@
 import pygame
-
 from pygame.sprite import Sprite
-
 from game.utils.constants import SPACESHIP, SCREEN_HEIGHT, SCREEN_WIDTH
 
-# sprite es un objeto de pygame (objeto dibujable)
 class Spaceship(Sprite):
     def __init__(self):
         self.image_width = 40
