@@ -30,6 +30,11 @@ class Game:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: 
                 self.playing = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    self.spaceship.move_left()
+                elif event.key == pygame.K_RIGHT:
+                    self.spaceship.move_right()
 
     def update(self):
         events = pygame.key.get_pressed() 
