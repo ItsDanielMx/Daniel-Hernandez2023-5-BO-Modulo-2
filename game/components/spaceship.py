@@ -2,7 +2,7 @@ import pygame
 
 from pygame.sprite import Sprite
 
-from game.utils.constants import SPACESHIP
+from game.utils.constants import SPACESHIP, SCREEN_HEIGHT, SCREEN_WIDTH
 
 # sprite es un objeto de pygame (objeto dibujable)
 class Spaceship(Sprite):
@@ -12,10 +12,15 @@ class Spaceship(Sprite):
         self.image = SPACESHIP
         self.image = pygame.transform.scale(self.image, (self.image_width, self.image_height))
         self.rect = self.image.get_rect()
-
+        self.rect.centerx = SCREEN_WIDTH // 2
+        self.rect.bottom = SCREEN_HEIGHT - 10  
+        self.game_speed = 10
 
     def draw(self, screen):
-        screen.blit(self.image, (self.rect.x, self.rect.y))
+        screen.blit(self.image, self.rect)
 
     def update(self, keyboard_events):
-        pass
+        if keyboard_events[pygame.K_LEFT]:
+            self.rect.x -= self.game_speed 
+        if keyboard_events[pygame.K_RIGHT]:
+            self.rect.x += self.game_speed 
